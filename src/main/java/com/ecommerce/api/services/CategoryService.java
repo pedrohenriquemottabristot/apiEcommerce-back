@@ -17,7 +17,10 @@ public class CategoryService {
     @Transactional(readOnly = true)
     public List<CategoryDTO> getAllCategories() {
         List<Category> result = categoryRepository.findAll();
-        List<CategoryDTO> list = result.stream().map(x->new CategoryDTO(x).toList());
+        List<CategoryDTO> list =
+                result.stream().map( category->
+                                new CategoryDTO(category))
+                                .toList();
         return list;
     }
 }
