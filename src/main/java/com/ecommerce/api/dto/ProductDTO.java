@@ -22,4 +22,11 @@ public class ProductDTO {
     private String imgUrl;
     @NotEmpty(message = "É obrigatório selecionar pelo menos uma categoria")
     private List<CategoryDTO> categories = new ArrayList<>();
+
+    public ProductDTO(String name, Double price, String description, String imgUrl) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.imgUrl = imgUrl;
+    }
 }

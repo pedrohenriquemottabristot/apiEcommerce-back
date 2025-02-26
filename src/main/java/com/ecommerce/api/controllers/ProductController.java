@@ -1,6 +1,7 @@
 package com.ecommerce.api.controllers;
 
 import com.ecommerce.api.dto.ProductDTO;
+import com.ecommerce.api.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,13 +15,12 @@ public class ProductController {
     private ProductService productService;
     @GetMapping(value ="/{id}")
     public ResponseEntity<ProductDTO> findById(@PathVariable Long id){
-       ProductDTO dto = productService.findById(id);
+       ProductDTO dto = productService.getProductById(id);
        return ResponseEntity.ok(dto);
     }
     @GetMapping
-    public ResponseEntity<List<ProductDTO>> findAll(){
-       List <ProductDTO> dtoList =productService.findAll();
-       return ResponseEntity.ok(dtoList);
+    public ResponseEntity<List<ProductDTO>> getAllProducts(){
+       return ResponseEntity.ok(productService.getAllProducts());
     }
 //    @PreAuthorize("hasRole('Role_ADMIN'))")
     @PostMapping
