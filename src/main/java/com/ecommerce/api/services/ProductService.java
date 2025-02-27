@@ -32,22 +32,25 @@ public class ProductService {
 
 
     }
-
+    @Transactional
     public ProductDTO create(ProductDTO dto) {
         Product product=  new Product(dto.getName(), dto.getPrice(), dto.getDescription(), dto.getImgUrl());
         Product savedProduct=  productRepository.save(product);
         return new ProductDTO(savedProduct.getName(), savedProduct.getPrice(), savedProduct.getDescription(), savedProduct.getImgUrl());
     }
-
+    @Transactional
     public ProductDTO update(Long id, ProductDTO dto) {
-        Product product=  productRepository.findById(id).orElseThrow();
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
         product.setName(dto.getName());
         product.setPrice(dto.getPrice());
         product.setDescription(dto.getDescription());
         product.setImgUrl(dto.getImgUrl());
-        Product updatedProduct=  productRepository.save(product);
-        return new ProductDTO(updatedProduct.getName(), updatedProduct.getPrice(), updatedProduct.getDescription(), updatedProduct.getImgUrl());
+        Product updatedProduct = productRepository.save(product);
+        return new ProductDTO(updatedProduct.getName(), updatedProduct.getPrice(),
+                updatedProduct.getDescription(), updatedProduct.getImgUrl());
     }
+
 
     public void delete(Long id) {
         productRepository.deleteById(id);
