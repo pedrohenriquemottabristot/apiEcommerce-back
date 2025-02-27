@@ -24,4 +24,12 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
+
+    public User(Object name, Object password, Object email, Object phone, Object roles) {
+        this.name = (String) name;
+        this.password = (String) password;
+        this.email = (String) email;
+        this.phone = (String) phone;
+        this.roles = (String) roles;
+    }
 }

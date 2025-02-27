@@ -1,6 +1,7 @@
 package com.ecommerce.api.controllers;
 
 import com.ecommerce.api.dto.PaymentDTO;
+import com.ecommerce.api.services.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

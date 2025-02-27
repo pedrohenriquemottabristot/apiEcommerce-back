@@ -11,4 +11,9 @@ public class PaymentDTO {
     private Long id;
     @NotNull(message = "Data de pagamento é obrigatório")
     private LocalDateTime moment;
+
+    public PaymentDTO(Long id, LocalDateTime moment) {
+        this.id = id;
+        this.moment = moment;
+    }
 }

@@ -3,7 +3,6 @@ package com.ecommerce.api.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Data
@@ -18,4 +17,8 @@ public class Payment {
     @OneToOne
     @MapsId
     private Order order;
+    public Payment(LocalDateTime moment) {
+        this.moment = moment;
+    }
+
 }
